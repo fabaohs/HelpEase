@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useMutateLogin } from "@/hooks/auth/mutations/useMutateLogin";
 
 const loginSchema = z.object({
   email: z
@@ -22,10 +23,10 @@ const loginSchema = z.object({
     .email({ message: "Invalid email" }),
   password: z
     .string({ required_error: "Password is required" })
-    .min(6, { message: "Password must be at least 6 characters" }),
+    .min(8, { message: "Password must be at least 6 characters" }),
 });
 
-type LoginData = z.infer<typeof loginSchema>;
+export type LoginData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const form = useForm<LoginData>({
@@ -38,8 +39,11 @@ export default function LoginPage() {
     formState: { errors },
   } = form;
 
-  function submit(data: LoginData) {
+  const { mutateAsync: login } = useMutateLogin();
+
+  async function submit(data: LoginData) {
     console.log(data);
+    await login({ login: data });
   }
 
   return (
