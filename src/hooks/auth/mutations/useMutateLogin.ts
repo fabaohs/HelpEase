@@ -1,6 +1,8 @@
 ﻿import { LoginData } from "@/app/Login/page";
 import { api, iApiConfig } from "@/services/api";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface iLoginParams {
   login: LoginData;
@@ -22,8 +24,20 @@ async function login({ login }: iLoginParams) {
 }
 
 export function useMutateLogin() {
+  const router = useRouter();
+
   return useMutation({
     mutationKey: ["login"],
     mutationFn: login,
+    onSuccess: (data) => {
+      if (data) {
+        toast.success("Logged in successfully!", {
+          duration: 5000,
+        });
+
+        router.push("/Home");
+        return data;
+      }
+    },
   });
 }

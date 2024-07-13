@@ -46,7 +46,8 @@ export async function api({ path, config }: iApiConfig) {
         ...config.headers,
         "Access-Control-Allow-Origin": "*",
       },
-      body: cryptBody(JSON.stringify(config.body)),
+      // body: cryptBody(JSON.stringify(config.body)),
+      body: JSON.stringify(config.body),
     };
   }
 
