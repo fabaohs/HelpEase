@@ -19,6 +19,7 @@ async function login({ login }: iLoginParams) {
   };
 
   const response = await api(params);
+  console.log("response", response);
 
   return response;
 }
@@ -30,7 +31,7 @@ export function useMutateLogin() {
     mutationKey: ["login"],
     mutationFn: login,
     onSuccess: (data) => {
-      if (data) {
+      if (data.success) {
         toast.success("Logged in successfully!", {
           duration: 5000,
         });

@@ -31,7 +31,7 @@ function cryptBody(body: string) {
 
 export async function api({ path, config }: iApiConfig) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-  const url = `${baseUrl}/${path}`;
+  const url = `${baseUrl}${path}`;
 
   let newConfig = config;
 
@@ -47,7 +47,7 @@ export async function api({ path, config }: iApiConfig) {
         "Access-Control-Allow-Origin": "*",
       },
       // body: cryptBody(JSON.stringify(config.body)),
-      body: JSON.stringify(config.body),
+      body: config.body,
     };
   }
 

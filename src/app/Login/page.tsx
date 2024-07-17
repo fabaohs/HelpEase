@@ -42,7 +42,6 @@ export default function LoginPage() {
   const { mutateAsync: login } = useMutateLogin();
 
   async function submit(data: LoginData) {
-    console.log(data);
     await login({ login: data });
   }
 
