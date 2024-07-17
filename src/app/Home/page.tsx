@@ -2,9 +2,11 @@
 
 export default function Home() {
   return (
-    <>
-      <p>Home</p>
-      <Link href="/Login">Login</Link>
-    </>
+    <div>
+      <h1 className="text-foreground">Home</h1>
+      <Link href="/Login" className="text-foreground">
+        Login
+      </Link>
+    </div>
   );
 }

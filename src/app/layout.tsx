@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="pt_BR">
       <body className={inter.className}>
         <QueryProvider>
-          <div className="dark min-h-screen bg-background flex items-center justify-center">
+          <div className="dark min-h-screen bg-background flex items-center justify-center text-foreground">
             {children}
           </div>
         </QueryProvider>
