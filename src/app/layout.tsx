@@ -19,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="pt_BR">
       <body className={inter.className}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <div className="dark min-h-screen bg-background flex items-center justify-center">
+            {children}
+          </div>
+        </QueryProvider>
       </body>
     </html>
   );

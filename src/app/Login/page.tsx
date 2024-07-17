@@ -46,62 +46,56 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="dark min-h-screen bg-background flex items-center justify-center">
-      <Card className="min-w-96 w-[40%] border-muted">
-        <CardHeader>
-          <CardTitle className="text-4xl font-black">HelpEase</CardTitle>
-          <CardDescription className="text-lg font-semibold">
-            The easiest way to get help
-          </CardDescription>
-          <Separator />
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSubmit(submit)();
-              }}
-              className="space-y-4"
-            >
-              <FormField
-                control={control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      {...field}
-                      id="email"
-                      placeholder="email@email.com"
-                    />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+    <Card className="min-w-96 w-[40%] border-muted">
+      <CardHeader>
+        <CardTitle className="text-4xl font-black">HelpEase</CardTitle>
+        <CardDescription className="text-lg font-semibold">
+          The easiest way to get help
+        </CardDescription>
+        <Separator />
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit(submit)();
+            }}
+            className="space-y-4"
+          >
+            <FormField
+              control={control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <Label htmlFor="email">Email</Label>
+                  <Input {...field} id="email" placeholder="email@email.com" />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <FormField
-                control={control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <Label htmlFor="password">Password</Label>
-                    <Input
-                      {...field}
-                      id="password"
-                      type="password"
-                      placeholder="********"
-                    />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+            <FormField
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                    {...field}
+                    id="password"
+                    type="password"
+                    placeholder="********"
+                  />
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-              <Button type="submit">Login</Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
-    </div>
+            <Button type="submit">Login</Button>
+          </form>
+        </Form>
+      </CardContent>
+    </Card>
   );
 }
