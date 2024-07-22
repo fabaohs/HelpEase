@@ -10,7 +10,7 @@ export default function Layout({ children }: iProps) {
     <div className="w-full h-full flex gap-9">
       <Navbar />
 
-      <main>{children}</main>
+      <main className="w-full">{children}</main>
     </div>
   );
 }

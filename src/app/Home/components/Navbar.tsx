@@ -4,10 +4,8 @@ import { Button } from "@/components/ui/button";
 import { LogOut, Menu } from "lucide-react";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -16,8 +14,10 @@ import { Separator } from "@/components/ui/separator";
 import { MENU_ITEMS } from "@/constants/MENU_ITEMs";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useState } from "react";
 
 export function Navbar() {
+  const [open, setOpen] = useState<boolean>(false);
   const router = useRouter();
 
   function logout(path: string) {
@@ -28,10 +28,15 @@ export function Navbar() {
     router.push(path);
   }
 
+  function redirectTo(link: string) {
+    router.push(link);
+    setOpen(!open);
+  }
+
   return (
-    <Sheet>
+    <Sheet open={open}>
       <SheetTrigger>
-        <Button>
+        <Button onClick={() => setOpen(!open)}>
           <Menu />
         </Button>
       </SheetTrigger>
@@ -47,7 +52,11 @@ export function Navbar() {
 
         <div className="flex flex-col space-y-2">
           {MENU_ITEMS.map((item) => (
-            <Button key={item.id} variant="ghost">
+            <Button
+              key={item.id}
+              variant="ghost"
+              onClick={() => redirectTo(item.link)}
+            >
               {item.name}
             </Button>
           ))}
