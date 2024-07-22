@@ -1,4 +1,6 @@
-﻿import { Button } from "@/components/ui/button";
+﻿"use client";
+
+import { Button } from "@/components/ui/button";
 import { LogOut, Menu } from "lucide-react";
 import {
   Sheet,
@@ -12,8 +14,20 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { MENU_ITEMS } from "@/constants/MENU_ITEMs";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function Navbar() {
+  const router = useRouter();
+
+  function logout(path: string) {
+    toast.info("Goodbye!", {
+      duration: 5000,
+      closeButton: true,
+    });
+    router.push(path);
+  }
+
   return (
     <Sheet>
       <SheetTrigger>
@@ -39,14 +53,10 @@ export function Navbar() {
           ))}
         </div>
 
-        <SheetFooter>
-          <SheetClose>
-            <Button variant="ghost">
-              <LogOut className="h-4 w-4 mr-2" />
-              Logout
-            </Button>
-          </SheetClose>
-        </SheetFooter>
+        <Button variant="ghost" onClick={() => logout("/Login")}>
+          <LogOut className="h-4 w-4 mr-2" />
+          Logout
+        </Button>
       </SheetContent>
     </Sheet>
   );

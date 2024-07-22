@@ -34,6 +34,7 @@ export function useMutateLogin() {
       if (data.success) {
         toast.success("Logged in successfully!", {
           duration: 5000,
+          closeButton: true,
         });
 
         router.push("/Home");

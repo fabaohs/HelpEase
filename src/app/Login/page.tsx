@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useMutateLogin } from "@/hooks/auth/mutations/useMutateLogin";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const loginSchema = z.object({
   email: z
@@ -39,7 +40,7 @@ export default function LoginPage() {
     formState: { errors },
   } = form;
 
-  const { mutateAsync: login } = useMutateLogin();
+  const { mutateAsync: login, isPending } = useMutateLogin();
 
   async function submit(data: LoginData) {
     await login({ login: data });
@@ -92,7 +93,9 @@ export default function LoginPage() {
               )}
             />
 
-            <Button type="submit">Login</Button>
+            <Button type="submit" disabled={isPending}>
+              {isPending && <ReloadIcon className="animate-spin mr-2" />}Login
+            </Button>
           </form>
         </Form>
       </CardContent>

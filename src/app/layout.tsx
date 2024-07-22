@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryClientProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <QueryProvider>
           <div className="dark min-h-screen bg-background flex items-center justify-center text-foreground">
+            <Toaster richColors />
             {children}
           </div>
         </QueryProvider>
