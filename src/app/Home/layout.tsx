@@ -7,7 +7,7 @@ interface iProps {
 
 export default function Layout({ children }: iProps) {
   return (
-    <div className="flex gap-4">
+    <div className="w-full h-full flex gap-9">
       <Navbar />
 
       <main>{children}</main>
